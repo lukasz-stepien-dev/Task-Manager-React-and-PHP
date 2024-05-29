@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { register } from '../api/api';
-import { useHistory } from 'react-router-dom';
+import { register } from '../../api/api';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await register({ first_name: firstName, last_name: lastName, email, password });
         if (response.message === 'User registered successfully') {
-            history.push('/login');
+            navigate('/login');
         } else {
             alert('Registration failed');
         }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getTasks, deleteTask } from '../api/api';
+import { getTasks, deleteTask } from '../../api/api';
 import TaskItem from './TaskItem';
 
 const TaskList = () => {

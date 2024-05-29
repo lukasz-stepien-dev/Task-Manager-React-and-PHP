@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { login } from '../api/api';
-import { useHistory } from 'react-router-dom';
+import { login } from '../../api/api';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,7 +13,7 @@ const Login = () => {
         if (response.message === 'Login successful') {
             // Przechowywanie tokenu lub sesji użytkownika
             localStorage.setItem('user', JSON.stringify(response.user));
-            history.push('/');
+            navigate('/');
         } else {
             alert('Invalid credentials');
         }

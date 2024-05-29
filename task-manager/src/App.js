@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import TaskList from './components/tasks/TaskList';
@@ -12,7 +12,7 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
       <Router>
-        <Switch>
+        <Routes>
           <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
@@ -21,7 +21,7 @@ function App() {
           <Route path="/edit-task/:id" component={EditTask} />
           <Route path="/profile" component={Profile} />
           <Route component={NotFound} />
-        </Switch>
+        </Routes>
       </Router>
   );
 }

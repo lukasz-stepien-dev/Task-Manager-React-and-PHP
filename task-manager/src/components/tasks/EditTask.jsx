@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { updateTask, getTasks } from '../api/api';
-import { useHistory, useParams } from 'react-router-dom';
+import { updateTask, getTasks } from '../../api/api';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const EditTask = () => {
     const [task, setTask] = useState(null);
     const { id } = useParams();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchTask = async () => {
@@ -19,7 +19,7 @@ const EditTask = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await updateTask(id, task);
-        history.push('/');
+        navigate('/');
     };
 
     if (!task) return <div>Loading...</div>;
